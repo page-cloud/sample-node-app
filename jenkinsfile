@@ -21,5 +21,12 @@ pipeline {
                     }
             }
         }
+		stage('Login again to minikube server'){
+			steps{
+				sshagent(['login-to-minikube']) {
+		     sh 'ssh -o StrictHostKeyChecking=no ubuntu@192.168.0.120'
+                    }
+		}
+	}
    }
 }
