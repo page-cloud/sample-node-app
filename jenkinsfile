@@ -24,7 +24,9 @@ pipeline {
 		stage('Login again to minikube server'){
 			steps{
 				sshagent(['login-to-minikube']) {
-		     sh 'ssh -o StrictHostKeyChecking=no ubuntu@192.168.0.120 kubectl apply -f .'
+		     sh 'ssh -o StrictHostKeyChecking=no ubuntu@192.168.0.120'
+		     sh 'cd /home/ubuntu'
+		     sh 'kubectl apply -f .'
                     }
 		}
 	}
