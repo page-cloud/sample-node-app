@@ -20,7 +20,7 @@ pipeline {
 		stage('Login to stating server') {
             steps {
                 sshagent(['login-to-minikube']) {
-                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@192.168.0.120 kubectl apply -f .'
+                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@192.168.0.120'
                     }
             }
         }
