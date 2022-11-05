@@ -18,7 +18,6 @@ pipeline {
             steps {
                 sshagent(['login-to-minikube']) {
 		     sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/samplenode-app/pods.yml services.yml ubuntu@192.168.0.120:/home/ubuntu/'
-		     sh 'kubectl apply -f .'
                     }
             }
         }
