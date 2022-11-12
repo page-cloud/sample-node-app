@@ -21,6 +21,7 @@ pipeline {
 			 script{
 				try{
 					sh "ssh -tt -o StrictHostKeyChecking=no ubuntu@192.168.0.120 sudo kubectl apply -f ."
+					sh "docker pull mdrajibkhan/nodeapp:v1"
 				}catch(error){
 					sh "ssh -tt -o StrictHostKeyChecking=no ubuntu@192.168.0.120 sudo kubectl create -f ."
 				}
