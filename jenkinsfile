@@ -17,16 +17,9 @@ pipeline {
 		stage('Login to stating server') {
            	 steps {
                		 sshagent(['login-to-minikube']) {
-		     	 sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/deploy-to-kubernetes/pods.yml services.yml ubuntu@192.168.0.120:/home/ubuntu/'
+					 sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/deploy-to-kubernetes/pods.yml services.yml ubuntu@192.168.0.120:/home/ubuntu/'
                     }
             }
         }
-		stage(Login again to staging server) {
-			steps {
-				sshagent(['login-to-minikube']) {
-				sh 'ssh -o StrictHostKeyChecking=no ubuntu@192.168.0.120'
-		     	sh 'kubectl apply -f .'
-			}
-		}
    }
 }
