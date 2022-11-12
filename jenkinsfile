@@ -20,9 +20,9 @@ pipeline {
 		     sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/deploy-to-kubernetes/pods.yml services.yml ubuntu@192.168.0.120:/home/ubuntu/'
 			 script{
 				try{
-					sh "ssh ubuntu@192.168.0.120 kubectl apply -f ."
+					sh "ssh -o StrictHostKeyChecking=no ubuntu@192.168.0.120 sudo kubectl apply -f ."
 				}catch(error){
-					sh "ssh ubuntu@192.168.0.120 kubectl create -f ."
+					sh "ssh -o StrictHostKeyChecking=no ubuntu@192.168.0.120 sudo kubectl create -f ."
 				}
 			 }
 		     
