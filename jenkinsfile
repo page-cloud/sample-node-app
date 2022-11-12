@@ -18,6 +18,9 @@ pipeline {
             steps {
                 sshagent(['login-to-minikube']) {
 		     sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/deploy-to-kubernetes/pods.yml services.yml ubuntu@192.168.0.120:/home/ubuntu/'
+		     sh 'cd /home/ubuntu'
+		     sh 'minikube ssh ubuntu@192.168.0.120'
+		     sh 'kubectl apply -f .'
                     }
             }
         }
